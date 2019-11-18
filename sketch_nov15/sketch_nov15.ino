@@ -9,6 +9,7 @@ char* convert_int16_to_str(int16_t i) { // converts int16 to string. Moreover, r
   sprintf(tmp_str, "%6d", i);
   return tmp_str;
 }
+const double LENGTH=6.052;
 void setup() {
   Serial.begin(9600);
   Wire.begin();
@@ -33,7 +34,8 @@ void loop() {
   double pitch = atan2((- x_Buff) , sqrt(y_Buff * y_Buff + z_Buff * z_Buff));// * 57.3;
 
   Serial.print("Radius= ");
-  Serial.println(abs(pitch)*7.27);
+  double radius=LENGTH*1.414*sqrt(1-cos(abs(pitch)));
+  Serial.println(radius);
   
 
 
